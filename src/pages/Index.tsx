@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "@/components/motion"; // Используем локальную реализацию motion
 import Icon from "@/components/ui/icon";
@@ -41,24 +40,26 @@ const Index = () => {
             transform: `translate(${mousePosition.x * -20}px, ${mousePosition.y * -20}px)`,
           }}
         />
-        
+
         {/* Градиентные элементы для создания глубины */}
         <motion.div
           className="absolute top-0 right-0 w-[40%] h-[40%] rounded-full opacity-20 blur-3xl"
           style={{
-            background: "radial-gradient(circle, rgba(226,161,76,0.4) 0%, rgba(226,161,76,0) 70%)",
+            background:
+              "radial-gradient(circle, rgba(226,161,76,0.4) 0%, rgba(226,161,76,0) 70%)",
             transform: `translate(${mousePosition.x * 30}px, ${mousePosition.y * 30}px)`,
           }}
         />
-        
+
         <motion.div
           className="absolute bottom-0 left-0 w-[30%] h-[30%] rounded-full opacity-20 blur-3xl"
           style={{
-            background: "radial-gradient(circle, rgba(45,212,191,0.3) 0%, rgba(45,212,191,0) 70%)",
+            background:
+              "radial-gradient(circle, rgba(45,212,191,0.3) 0%, rgba(45,212,191,0) 70%)",
             transform: `translate(${mousePosition.x * -25}px, ${mousePosition.y * -25}px)`,
           }}
         />
-        
+
         {/* Темный градиент поверх для лучшей читаемости */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#070B16] via-[#070B16]/80 to-[#070B16]/70"></div>
       </div>
@@ -69,12 +70,13 @@ const Index = () => {
         <motion.div
           className="absolute inset-0 opacity-5"
           style={{
-            backgroundImage: "radial-gradient(rgba(255, 255, 255, 0.8) 1px, transparent 1px)",
+            backgroundImage:
+              "radial-gradient(rgba(255, 255, 255, 0.8) 1px, transparent 1px)",
             backgroundSize: "30px 30px",
             transform: `translate(${mousePosition.x * -5}px, ${mousePosition.y * -5}px)`,
           }}
         />
-        
+
         {/* Линии для создания структуры */}
         <motion.div
           className="absolute top-0 right-[15%] w-[1px] h-[50%] bg-gradient-to-b from-transparent via-[#E2A14C]/30 to-transparent opacity-30"
@@ -82,7 +84,7 @@ const Index = () => {
             transform: `translateX(${mousePosition.x * 10}px)`,
           }}
         />
-        
+
         <motion.div
           className="absolute top-[30%] left-[10%] w-[30%] h-[1px] bg-gradient-to-r from-transparent via-[#2DD4BF]/30 to-transparent opacity-30"
           style={{
@@ -97,9 +99,11 @@ const Index = () => {
           <div className="w-8 h-8 bg-gradient-to-br from-[#E2A14C] to-[#E2A14C]/70 rounded-md flex items-center justify-center text-xs font-bold">
             JBS
           </div>
-          <div className="text-xl font-medium tracking-wider">Just Buy Site</div>
+          <div className="text-xl font-medium tracking-wider">
+            Just Buy Site
+          </div>
         </div>
-        
+
         <nav className="hidden lg:flex items-center space-x-10">
           <a
             href="#"
@@ -132,7 +136,7 @@ const Index = () => {
             Контакты
           </a>
         </nav>
-        
+
         <div className="flex items-center space-x-6">
           <a
             href="tel:+79991234567"
@@ -179,12 +183,16 @@ const Index = () => {
             <div className="text-6xl md:text-8xl font-bold tracking-tight mb-3 bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-white/80">
               <span className="relative">
                 Just
-                <span className="absolute -top-3 right-0 text-xs tracking-widest text-white/50">•</span>
+                <span className="absolute -top-3 right-0 text-xs tracking-widest text-white/50">
+                  •
+                </span>
               </span>{" "}
               <span className="text-[#E2A14C]">Buy</span>{" "}
               <span className="relative">
                 Site
-                <span className="absolute -bottom-3 -right-3 text-xs tracking-widest text-white/50">•</span>
+                <span className="absolute -bottom-3 -right-3 text-xs tracking-widest text-white/50">
+                  •
+                </span>
               </span>
             </div>
             <div className="absolute -bottom-6 right-0 left-0">
@@ -203,7 +211,7 @@ const Index = () => {
           }}
         >
           <h1 className="text-3xl md:text-5xl font-medium mb-6 leading-tight">
-            Отдыхай, пока твой сайт 
+            Отдыхай, пока твой сайт
             <span className="text-[#2DD4BF]"> работает</span>
           </h1>
           <p className="text-white/60 text-lg max-w-xl mx-auto leading-relaxed">
@@ -221,10 +229,14 @@ const Index = () => {
             }}
           >
             <div className="absolute -right-4 -top-4 w-16 h-16 bg-[#E2A14C]/10 rounded-full blur-xl group-hover:bg-[#E2A14C]/20 transition-all"></div>
-            <div className="text-[#E2A14C] text-5xl font-bold mb-3 relative z-10">150+</div>
-            <div className="text-white/70 relative z-10">реализованных проектов</div>
+            <div className="text-[#E2A14C] text-5xl font-bold mb-3 relative z-10">
+              150+
+            </div>
+            <div className="text-white/70 relative z-10">
+              реализованных проектов
+            </div>
           </motion.div>
-          
+
           <motion.div
             className="backdrop-blur-md bg-white/5 rounded-xl p-6 border border-white/10 transition-all hover:border-[#2DD4BF]/20 group overflow-hidden relative"
             style={{
@@ -232,10 +244,14 @@ const Index = () => {
             }}
           >
             <div className="absolute -right-4 -top-4 w-16 h-16 bg-[#2DD4BF]/10 rounded-full blur-xl group-hover:bg-[#2DD4BF]/20 transition-all"></div>
-            <div className="text-[#2DD4BF] text-5xl font-bold mb-3 relative z-10">98%</div>
-            <div className="text-white/70 relative z-10">довольных клиентов</div>
+            <div className="text-[#2DD4BF] text-5xl font-bold mb-3 relative z-10">
+              98%
+            </div>
+            <div className="text-white/70 relative z-10">
+              довольных клиентов
+            </div>
           </motion.div>
-          
+
           <motion.div
             className="backdrop-blur-md bg-white/5 rounded-xl p-6 border border-white/10 transition-all hover:border-white/20 group overflow-hidden relative"
             style={{
@@ -243,8 +259,12 @@ const Index = () => {
             }}
           >
             <div className="absolute -right-4 -top-4 w-16 h-16 bg-white/5 rounded-full blur-xl group-hover:bg-white/10 transition-all"></div>
-            <div className="text-white text-5xl font-bold mb-3 relative z-10">14</div>
-            <div className="text-white/70 relative z-10">дней среднее время работы</div>
+            <div className="text-white text-5xl font-bold mb-3 relative z-10">
+              14
+            </div>
+            <div className="text-white/70 relative z-10">
+              дней среднее время работы
+            </div>
           </motion.div>
         </div>
 
@@ -265,4 +285,3 @@ const Index = () => {
 };
 
 export default Index;
-</motion.div>
