@@ -1,5 +1,6 @@
+
 import React, { useEffect, useRef, useState } from "react";
-import { motion } from "@/components/motion"; // Используем локальную реализацию motion
+import { motion } from "@/components/motion";
 import Icon from "@/components/ui/icon";
 import { Button } from "@/components/ui/button";
 
@@ -10,8 +11,7 @@ const Index = () => {
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (heroRef.current) {
-        const { left, top, width, height } =
-          heroRef.current.getBoundingClientRect();
+        const { left, top, width, height } = heroRef.current.getBoundingClientRect();
         const x = (e.clientX - left) / width - 0.5;
         const y = (e.clientY - top) / height - 0.5;
         setMousePosition({ x, y });
@@ -23,262 +23,172 @@ const Index = () => {
   }, []);
 
   return (
-    <div
-      className="min-h-screen bg-[#070B16] text-white overflow-hidden"
-      ref={heroRef}
-    >
+    <div className="relative min-h-screen bg-gradient-to-b from-[#0a0f1e] to-[#1a212c] text-white overflow-hidden" ref={heroRef}>
       {/* Фоновые элементы с параллакс-эффектом */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Основное фоновое изображение */}
-        <motion.div
-          className="absolute top-0 left-0 w-full h-full opacity-25"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1526498460520-4c246339dccb?q=80&w=2970')",
+        {/* Основной фоновый слой */}
+        <motion.div 
+          className="absolute top-0 left-0 w-full h-full opacity-30"
+          style={{ 
+            backgroundImage: "url('https://images.unsplash.com/photo-1500964757637-c85e8a162699?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2203&q=80')", 
             backgroundSize: "cover",
             backgroundPosition: "center",
-            transform: `translate(${mousePosition.x * -20}px, ${mousePosition.y * -20}px)`,
+            transform: `translate(${mousePosition.x * -20}px, ${mousePosition.y * -20}px)` 
           }}
         />
-
-        {/* Градиентные элементы для создания глубины */}
-        <motion.div
-          className="absolute top-0 right-0 w-[40%] h-[40%] rounded-full opacity-20 blur-3xl"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(226,161,76,0.4) 0%, rgba(226,161,76,0) 70%)",
-            transform: `translate(${mousePosition.x * 30}px, ${mousePosition.y * 30}px)`,
+        
+        {/* Второй слой с эффектом размытия */}
+        <motion.div 
+          className="absolute top-0 left-0 w-full h-full opacity-5"
+          style={{ 
+            backgroundImage: "url('https://images.unsplash.com/photo-1580121841573-fe552c07abb2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80')", 
+            backgroundSize: "cover",
+            filter: "blur(8px)",
+            backgroundPosition: "center",
+            transform: `translate(${mousePosition.x * -10}px, ${mousePosition.y * -10}px)` 
           }}
         />
-
-        <motion.div
-          className="absolute bottom-0 left-0 w-[30%] h-[30%] rounded-full opacity-20 blur-3xl"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(45,212,191,0.3) 0%, rgba(45,212,191,0) 70%)",
-            transform: `translate(${mousePosition.x * -25}px, ${mousePosition.y * -25}px)`,
-          }}
-        />
-
-        {/* Темный градиент поверх для лучшей читаемости */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#070B16] via-[#070B16]/80 to-[#070B16]/70"></div>
+        
+        {/* Цветовая обработка для создания глубины */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f1e]/80 via-[#1a212c]/60 to-[#1a212c]/80"></div>
       </div>
 
-      {/* Декоративные элементы */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Сетка точек */}
-        <motion.div
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage:
-              "radial-gradient(rgba(255, 255, 255, 0.8) 1px, transparent 1px)",
-            backgroundSize: "30px 30px",
-            transform: `translate(${mousePosition.x * -5}px, ${mousePosition.y * -5}px)`,
-          }}
-        />
-
-        {/* Линии для создания структуры */}
-        <motion.div
-          className="absolute top-0 right-[15%] w-[1px] h-[50%] bg-gradient-to-b from-transparent via-[#E2A14C]/30 to-transparent opacity-30"
-          style={{
-            transform: `translateX(${mousePosition.x * 10}px)`,
-          }}
-        />
-
-        <motion.div
-          className="absolute top-[30%] left-[10%] w-[30%] h-[1px] bg-gradient-to-r from-transparent via-[#2DD4BF]/30 to-transparent opacity-30"
-          style={{
-            transform: `translateY(${mousePosition.y * 10}px)`,
-          }}
-        />
-      </div>
+      {/* Декоративные элементы дизайна (плавающие частицы) */}
+      <motion.div 
+        className="absolute size-64 rounded-full bg-[#D5AF7D]/5 blur-3xl"
+        style={{ 
+          top: '15%', 
+          left: '10%',
+          transform: `translate(${mousePosition.x * 30}px, ${mousePosition.y * 30}px)` 
+        }}
+      />
+      <motion.div 
+        className="absolute size-80 rounded-full bg-[#6587AB]/5 blur-3xl"
+        style={{ 
+          bottom: '10%', 
+          right: '5%',
+          transform: `translate(${mousePosition.x * -25}px, ${mousePosition.y * -25}px)` 
+        }}
+      />
 
       {/* Навигация */}
-      <header className="relative z-10 flex justify-between items-center px-6 md:px-12 py-8">
-        <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-gradient-to-br from-[#E2A14C] to-[#E2A14C]/70 rounded-md flex items-center justify-center text-xs font-bold">
-            JBS
-          </div>
-          <div className="text-xl font-medium tracking-wider">
-            Just Buy Site
-          </div>
-        </div>
-
-        <nav className="hidden lg:flex items-center space-x-10">
-          <a
-            href="#"
-            className="text-white/80 hover:text-white transition-colors text-sm tracking-wide"
-          >
-            Услуги
-          </a>
-          <a
-            href="#"
-            className="text-white/80 hover:text-white transition-colors text-sm tracking-wide"
-          >
-            Портфолио
-          </a>
-          <a
-            href="#"
-            className="text-white/80 hover:text-white transition-colors text-sm tracking-wide"
-          >
-            Процесс
-          </a>
-          <a
-            href="#"
-            className="text-white/80 hover:text-white transition-colors text-sm tracking-wide"
-          >
-            Цены
-          </a>
-          <a
-            href="#"
-            className="text-white/80 hover:text-white transition-colors text-sm tracking-wide"
-          >
-            Контакты
-          </a>
+      <header className="relative z-10 flex justify-between items-center px-8 py-6">
+        <div className="font-medium tracking-wider text-2xl text-[#E2A14C] opacity-75">JBS</div>
+        <nav className="hidden md:flex items-center space-x-8">
+          <a href="#" className="text-white/70 hover:text-white transition-colors">Услуги</a>
+          <a href="#" className="text-white/70 hover:text-white transition-colors">Портфолио</a>
+          <a href="#" className="text-white/70 hover:text-white transition-colors">Процесс</a>
+          <a href="#" className="text-white/70 hover:text-white transition-colors">О нас</a>
+          <a href="#" className="text-white/70 hover:text-white transition-colors">Блог</a>
+          <a href="#" className="text-white/70 hover:text-white transition-colors">Контакты</a>
         </nav>
-
         <div className="flex items-center space-x-6">
-          <a
-            href="tel:+79991234567"
-            className="hidden md:block text-white/80 hover:text-white transition-colors text-sm tracking-wide"
-          >
+          <a href="tel:+79991234567" className="hidden md:block text-white/70 hover:text-white transition-colors">
             +7 999 123-45-67
           </a>
           <div className="flex space-x-4">
-            <a
-              href="#"
-              className="text-white/70 hover:text-[#E2A14C] transition-all transform hover:scale-110"
-            >
+            <a href="#" className="text-white/60 hover:text-[#E2A14C] transition-colors">
               <Icon name="Twitter" size={18} />
             </a>
-            <a
-              href="#"
-              className="text-white/70 hover:text-[#E2A14C] transition-all transform hover:scale-110"
-            >
+            <a href="#" className="text-white/60 hover:text-[#E2A14C] transition-colors">
               <Icon name="Instagram" size={18} />
             </a>
-            <a
-              href="#"
-              className="text-white/70 hover:text-[#E2A14C] transition-all transform hover:scale-110"
-            >
+            <a href="#" className="text-white/60 hover:text-[#E2A14C] transition-colors">
               <Icon name="Telegram" size={18} />
             </a>
           </div>
-          <button className="lg:hidden text-white">
-            <Icon name="Menu" size={24} />
-          </button>
         </div>
       </header>
 
       {/* Основной контент */}
-      <main className="relative z-10 flex flex-col items-center justify-center min-h-[85vh] px-6 md:px-10 text-center">
-        {/* Логотип и слоган */}
-        <motion.div
-          className="mb-12"
-          style={{
-            transform: `translate(${mousePosition.x * 15}px, ${mousePosition.y * 15}px)`,
+      <main className="relative z-10 flex flex-col items-center justify-center min-h-[80vh] px-6 text-center">
+        {/* Логотип и слоган - стилизованная версия */}
+        <motion.div 
+          className="mb-10 relative"
+          style={{ 
+            transform: `translate(${mousePosition.x * 15}px, ${mousePosition.y * 15}px)` 
           }}
         >
-          <div className="relative inline-block">
-            <div className="text-6xl md:text-8xl font-bold tracking-tight mb-3 bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-white/80">
-              <span className="relative">
-                Just
-                <span className="absolute -top-3 right-0 text-xs tracking-widest text-white/50">
-                  •
-                </span>
-              </span>{" "}
-              <span className="text-[#E2A14C]">Buy</span>{" "}
-              <span className="relative">
-                Site
-                <span className="absolute -bottom-3 -right-3 text-xs tracking-widest text-white/50">
-                  •
-                </span>
-              </span>
+          {/* Фоновый элемент для логотипа */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] h-[110%] rounded-full bg-[#E2A14C]/5 blur-xl"></div>
+          
+          {/* Логотип */}
+          <div className="relative flex flex-col items-center">
+            <div className="flex items-baseline space-x-2">
+              <span className="text-6xl md:text-8xl font-bold text-white tracking-tight">Just</span>
+              <div className="relative">
+                <span className="text-7xl md:text-9xl font-bold text-[#E2A14C] tracking-tight relative z-10">Buy</span>
+                <div className="absolute -bottom-1 -left-1 -right-1 h-px bg-gradient-to-r from-transparent via-[#E2A14C]/50 to-transparent"></div>
+              </div>
+              <span className="text-6xl md:text-8xl font-bold text-white tracking-tight">Site</span>
             </div>
-            <div className="absolute -bottom-6 right-0 left-0">
-              <p className="text-white/60 tracking-[0.3em] text-xs font-light">
-                ATTENTION TO DETAILS • PURSUIT OF IDEALS
-              </p>
+            
+            {/* Слоган */}
+            <div className="mt-3 text-white/60 tracking-[0.3em] text-xs font-light">
+              ATTENTION TO DETAILS • PURSUIT OF IDEALS
             </div>
           </div>
         </motion.div>
 
-        {/* Слоган */}
-        <motion.div
-          className="mb-16 max-w-3xl"
-          style={{
-            transform: `translate(${mousePosition.x * 8}px, ${mousePosition.y * 8}px)`,
+        {/* Главный заголовок с эффектом следования за мышью */}
+        <motion.div 
+          className="mb-14 max-w-3xl relative"
+          style={{ 
+            transform: `translate(${mousePosition.x * 8}px, ${mousePosition.y * 8}px)` 
           }}
         >
-          <h1 className="text-3xl md:text-5xl font-medium mb-6 leading-tight">
-            Отдыхай, пока твой сайт
-            <span className="text-[#2DD4BF]"> работает</span>
+          <div className="absolute -inset-10 bg-[#1a212c]/50 rounded-3xl backdrop-blur-sm -z-10 opacity-80"></div>
+          <h1 className="text-3xl md:text-5xl font-medium mb-6 tracking-tight">
+            Отдыхай, пока твой сайт работает
           </h1>
-          <p className="text-white/60 text-lg max-w-xl mx-auto leading-relaxed">
-            Мы создаем сайты, которые приносят результат, пока вы занимаетесь
-            тем, что действительно любите
+          <p className="text-white/60 text-lg max-w-2xl mx-auto">
+            Мы создаем сайты, которые приносят результат, пока вы занимаетесь тем, что действительно любите
           </p>
         </motion.div>
 
-        {/* Блок с преимуществами */}
+        {/* Блок с преимуществами - с эффектом матового стекла */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14 w-full max-w-5xl">
-          <motion.div
-            className="backdrop-blur-md bg-white/5 rounded-xl p-6 border border-white/10 transition-all hover:border-[#E2A14C]/20 group overflow-hidden relative"
-            style={{
-              transform: `translateY(${mousePosition.y * 5}px)`,
-            }}
+          <motion.div 
+            className="backdrop-blur-md bg-white/5 rounded-xl p-6 border border-white/10 relative overflow-hidden group"
+            style={{ transform: `translate(${mousePosition.x * -5}px, ${mousePosition.y * -5}px)` }}
           >
-            <div className="absolute -right-4 -top-4 w-16 h-16 bg-[#E2A14C]/10 rounded-full blur-xl group-hover:bg-[#E2A14C]/20 transition-all"></div>
-            <div className="text-[#E2A14C] text-5xl font-bold mb-3 relative z-10">
-              150+
-            </div>
-            <div className="text-white/70 relative z-10">
-              реализованных проектов
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-br from-[#E2A14C]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="text-[#E2A14C] text-5xl font-bold mb-3">150+</div>
+            <div className="text-white/80">реализованных проектов</div>
           </motion.div>
-
-          <motion.div
-            className="backdrop-blur-md bg-white/5 rounded-xl p-6 border border-white/10 transition-all hover:border-[#2DD4BF]/20 group overflow-hidden relative"
-            style={{
-              transform: `translateY(${mousePosition.y * 10}px)`,
-            }}
+          
+          <motion.div 
+            className="backdrop-blur-md bg-white/5 rounded-xl p-6 border border-white/10 relative overflow-hidden group"
+            style={{ transform: `translate(${mousePosition.x * -2}px, ${mousePosition.y * -2}px)` }}
           >
-            <div className="absolute -right-4 -top-4 w-16 h-16 bg-[#2DD4BF]/10 rounded-full blur-xl group-hover:bg-[#2DD4BF]/20 transition-all"></div>
-            <div className="text-[#2DD4BF] text-5xl font-bold mb-3 relative z-10">
-              98%
-            </div>
-            <div className="text-white/70 relative z-10">
-              довольных клиентов
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-br from-[#E2A14C]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="text-[#E2A14C] text-5xl font-bold mb-3">98%</div>
+            <div className="text-white/80">довольных клиентов</div>
           </motion.div>
-
-          <motion.div
-            className="backdrop-blur-md bg-white/5 rounded-xl p-6 border border-white/10 transition-all hover:border-white/20 group overflow-hidden relative"
-            style={{
-              transform: `translateY(${mousePosition.y * 5}px)`,
-            }}
+          
+          <motion.div 
+            className="backdrop-blur-md bg-white/5 rounded-xl p-6 border border-white/10 relative overflow-hidden group"
+            style={{ transform: `translate(${mousePosition.x * 2}px, ${mousePosition.y * 2}px)` }}
           >
-            <div className="absolute -right-4 -top-4 w-16 h-16 bg-white/5 rounded-full blur-xl group-hover:bg-white/10 transition-all"></div>
-            <div className="text-white text-5xl font-bold mb-3 relative z-10">
-              14
-            </div>
-            <div className="text-white/70 relative z-10">
-              дней среднее время работы
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-br from-[#E2A14C]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="text-[#E2A14C] text-5xl font-bold mb-3">14</div>
+            <div className="text-white/80">дней среднее время работы</div>
           </motion.div>
         </div>
 
-        {/* Кнопка */}
-        <motion.div
-          style={{
-            transform: `translateY(${mousePosition.y * 3}px)`,
-          }}
-        >
-          <Button className="bg-gradient-to-r from-[#E2A14C] to-[#E2854C] hover:from-[#E2854C] hover:to-[#E2A14C] text-black font-medium px-10 py-7 text-lg rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#E2A14C]/20">
-            Обсудить проект
-            <Icon name="ArrowRight" className="ml-2" size={18} />
+        {/* CTA кнопка с эффектом наведения */}
+        <motion.div style={{ transform: `translate(${mousePosition.x * 10}px, ${mousePosition.y * 10}px)` }}>
+          <Button 
+            className="relative overflow-hidden group bg-[#E2A14C] hover:bg-[#D59B40] text-black px-10 py-7 text-lg font-medium rounded-full transition-all duration-300"
+          >
+            <span className="relative z-10">Обсудить проект</span>
+            <span className="absolute inset-0 bg-white/20 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
+            <span className="absolute top-0 right-0 w-12 h-12 -mt-3 -mr-3 bg-[#D59B40] rounded-full blur-xl opacity-40 group-hover:opacity-70 transition-opacity duration-300"></span>
           </Button>
         </motion.div>
+
+        {/* Декоративная линия внизу */}
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-40 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
       </main>
     </div>
   );
